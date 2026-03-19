@@ -5,12 +5,12 @@ services:
     region: frankfurt
     plan: free
     buildCommand: npm ci && npm run build
-    preDeployCommand: npx medusa db:migrate
+    preDeployCommand: REDIS_URL= npx medusa db:migrate
     startCommand: npm run start
     healthCheckPath: /health
     envVars:
       - key: NODE_ENV
-        value: production
+        value: production 
       - key: DATABASE_URL
         fromDatabase:
           name: eticaret-db
