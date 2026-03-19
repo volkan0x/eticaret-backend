@@ -1,0 +1,44 @@
+services:
+  - type: web
+    name: eticaret-backend
+    runtime: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: eticaret-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: eticaret-redis
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: COOKIE_SECRET
+        generateValue: true
+      - key: STORE_CORS
+        value: http://localhost:8000
+      - key: ADMIN_CORS
+        value: http://localhost:9000
+      - key: AUTH_CORS
+        value: http://localhost:9000
+
+databases:
+  - name: eticaret-db
+    region: frankfurt
+    plan: free
+    databaseName: medusa_v2
+    user: medusa
+
+  - type: redis
+    name: eticaret-redis
+    region: frankfurt
+    plan: free
+    ipAllowList: []
