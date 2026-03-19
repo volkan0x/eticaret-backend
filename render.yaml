@@ -30,15 +30,15 @@ services:
       - key: AUTH_CORS
         value: http://localhost:9000
 
+  - type: redis
+    name: eticaret-redis
+    region: frankfurt
+    plan: free
+    ipAllowList: []
+
 databases:
   - name: eticaret-db
     region: frankfurt
     plan: free
     databaseName: medusa_v2
     user: medusa
-
-  - type: redis
-    name: eticaret-redis
-    region: frankfurt
-    plan: free
-    ipAllowList: []
