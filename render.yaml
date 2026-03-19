@@ -24,11 +24,11 @@ services:
       - key: COOKIE_SECRET
         generateValue: true
       - key: STORE_CORS
-        value: http://localhost:8000
+        value: http://localhost:8000,https://eticaret-backend-0hke.onrender.com
       - key: ADMIN_CORS
-        value: http://localhost:9000
+        value: http://localhost:9000,https://eticaret-backend-0hke.onrender.com
       - key: AUTH_CORS
-        value: http://localhost:9000
+        value: http://localhost:9000,https://eticaret-backend-0hke.onrender.com
 
   - type: redis
     name: eticaret-redis
