@@ -1,0 +1,10 @@
+node_modules
+.git
+.medusa
+dump.rdb
+.vscode
+coverage
+build
+dist
+.cache
+*.log
